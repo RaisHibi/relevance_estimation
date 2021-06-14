@@ -5,6 +5,7 @@ import sys
 from PyQt5.QtWidgets import (QMainWindow, QApplication, QPushButton, QWidget, QAction, QTabWidget, QVBoxLayout,
                             QPushButton, QLabel, QHBoxLayout, QSizePolicy, QLineEdit)
 from PyQt5.QtCore import QRect, Qt
+from PyQt5.QtGui import QFont
 
 
 class App(QMainWindow):
@@ -35,34 +36,35 @@ class AdEditPage2(QWidget):
     def UiComponents(self):
         self.adEditBlock = QWidget(self)
 
-        self.adEditBlock.setFixedSize(320, 320)
-        self.adEditBlock.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Expanding)
+        self.adEditBlock.setMaximumSize(500, 250)
 
         self.adEditBlockVbox = QVBoxLayout()
-        self.adEditBlockVbox.addStretch(1)
 
-        self.header = QLabel('<h1>Редактирование рекламы</h1>')
-        self.header.setAlignment(Qt.AlignLeft)
+        self.header = QLabel('<h1>Редактирование ключевых слов</h1>')
+        self.header.setAlignment(Qt.AlignCenter)
+
+        self.adEditBlockVbox.addStretch()
         self.adEditBlockVbox.addWidget(self.header)
 
-        self.keywordsLabel = QLabel(self)
+        self.keywordsLabel = QLabel()
         self.keywordsLabel.setText('Ключевые слова:')
-        self.keywordsEditLine = QLineEdit(self)
+        self.keywordsEditLine = QLineEdit()
         self.keywordsHbox = QHBoxLayout()
         self.keywordsHbox.addWidget(self.keywordsLabel)
         self.keywordsHbox.addWidget(self.keywordsEditLine)
 
+        self.adEditBlockVbox.addStretch()
         self.adEditBlockVbox.addLayout(self.keywordsHbox)
 
         self.saveAsButton = QPushButton("Сохранить как...")
         self.saveAsButton.setMaximumWidth(100)
-        #backButton.setGeometry(QRect(5, 5, 100, 20))
         self.saveAsButtonHbox = QHBoxLayout()
-        self.saveAsButtonHbox.addWidget(self.saveAsButton)
         self.saveAsButtonHbox.addStretch(1)
+        self.saveAsButtonHbox.addWidget(self.saveAsButton)
 
+        self.adEditBlockVbox.addStretch()
         self.adEditBlockVbox.addLayout(self.saveAsButtonHbox)
-        self.adEditBlockVbox.addStretch(1)
+        self.adEditBlockVbox.addStretch()
         self.adEditBlockVbox.setSpacing(30)
 
         self.adEditBlock.setLayout(self.adEditBlockVbox)
