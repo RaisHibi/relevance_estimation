@@ -34,14 +34,15 @@ class AdEditPage2(QWidget):
 
     def UiComponents(self):
         self.adEditBlock = QWidget(self)
-        self.adEditBlock.setGeometry(0, 0, 500, 500)
-        self.adEditBlock.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+
+        self.adEditBlock.setFixedSize(320, 320)
+        self.adEditBlock.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Expanding)
 
         self.adEditBlockVbox = QVBoxLayout()
         self.adEditBlockVbox.addStretch(1)
 
         self.header = QLabel('<h1>Редактирование рекламы</h1>')
-        self.header.setAlignment(Qt.AlignCenter)
+        self.header.setAlignment(Qt.AlignLeft)
         self.adEditBlockVbox.addWidget(self.header)
 
         self.keywordsLabel = QLabel(self)
